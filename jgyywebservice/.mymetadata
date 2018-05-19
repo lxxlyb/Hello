@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="jgyywebservice"
+  id="myeclipse.1525750756649"
+  context-root="/jgyywebservice"
+  j2ee-spec="6.0"
+  archive="jgyywebservice.war">
+  <attributes>
+    <attribute name="webrootdir" value="WebRoot" />
+  </attributes>
+</project-module>
+
