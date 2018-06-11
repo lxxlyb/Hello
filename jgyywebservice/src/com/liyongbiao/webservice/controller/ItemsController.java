@@ -1,46 +1,66 @@
 package com.liyongbiao.webservice.controller;
 
-
-
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.liyongbiao.webservice.po.ItemsCustom;
 import com.liyongbiao.webservice.service.ItemsService;
 
-
-
-
 @Controller
+@RequestMapping("/item")
 public class ItemsController {
 
 	@Autowired
 	private ItemsService itemsService;
-	
-	// 商品查询
-	@RequestMapping("/queryItems")
-    public ModelAndView queryItems() throws Exception{
-    	
-    	//调用service 连接数据库，查找商品列表
-    	List<ItemsCustom> itemsList = itemsService.findItemsList(null);	
-    	
-    	//返回ModelAndView
-    	ModelAndView modelAndView=new ModelAndView();
-    	
-    	//在jsp页面中通过itemsList取数据；
-    	modelAndView.addObject("itemsList", itemsList);
-    	
-    	modelAndView.setViewName("items/itemsList");
-    	System.out.println("Hello-------------------");
-		return modelAndView;
-    	
-    	
-    	
-    }	
 
-	//商品修改
+	@RequestMapping("/queryitem")
+	public ModelAndView queryItems() throws Exception {
+
+		List<ItemsCustom> itemsList = itemsService.findItemsList(null);
+
+		// ModelAndView modelAndView=new ModelAndView();
+		ModelAndView modelAndView = new ModelAndView("items/itemsList", "itemsList", itemsList);
+
+		/*
+		 * modelAndView.addObject("itemsList", itemsList);
+		 * 
+		 * modelAndView.setViewName("items/itemsList");
+		 */
+		System.out.println("Hello-------------------");
+		return modelAndView;
+
+	}
+
+	@RequestMapping("/edititems")
+	public ModelAndView editItems(HttpServletRequest request) throws Exception {
+		// 瀹氫箟涓�涓猰odelandview
+		ModelAndView modelAndView = new ModelAndView();
+
+		// 璋冪敤service鏌ヨ鍟嗗搧淇℃伅
+		int id=Integer.parseInt(request.getParameter("id"));
+		ItemsCustom findItemById = itemsService.findItemById(id);
+		modelAndView.addObject("item", findItemById);
+
+		// 鍟嗗搧淇敼椤甸潰
+		modelAndView.setViewName("items/editItems");
+		return modelAndView;
+
+	}
+
+	@RequestMapping("/editItemsSubmit")
+	public String editItemsSubmit() throws Exception {
+		
+		
+		  
+		
+		return null;
+
+	}
 }

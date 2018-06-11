@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" ?>  
+<?xml version="1.0" encoding="UTF-8"?>  
 <!DOCTYPE mapper  
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+
 <mapper namespace="com.liyongbiao.webservice.mapper.ItemsMapper">
   
   <!--定义商品查询的片段  优点是可以共享-->
@@ -20,5 +21,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
       <include refid="query_items_where"/>
      </where>
   </select>
+  
+  <!-- 根据商品编码查询商品信息 -->
+  <select id="findItemById" parameterType="int" resultType="com.liyongbiao.webservice.po.ItemsCustom">
+    select * from items where id=#{id}
+  </select>
  
+
 </mapper>

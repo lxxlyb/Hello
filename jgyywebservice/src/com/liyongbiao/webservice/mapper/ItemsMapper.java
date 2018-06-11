@@ -14,4 +14,16 @@ public interface ItemsMapper {
 	 * @result:            List<ItemsCustom>
 	 */
 	public List<ItemsCustom> findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+	
+	
+	/**
+	 * 根据商品编码查询商品信息
+	 * @param id
+	 * @return ItemsCustom
+	 * @throws Exception
+	 */
+	public  ItemsCustom  findItemById(int id) throws Exception;
+	
+	
+	
 }

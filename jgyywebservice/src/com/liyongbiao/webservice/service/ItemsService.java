@@ -8,10 +8,18 @@ import com.liyongbiao.webservice.po.ItemsQueryVo;
 public interface ItemsService {
 
 	/**
-	 * ÉÌÆ·¹ÜÀíservice
+	 * ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½service
 	 * @param itemsQueryVo
 	 * @return
 	 * @throws Exception
 	 */
 	public List<ItemsCustom>  findItemsList(ItemsQueryVo itemsQueryVo) throws Exception;
+	
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 * @throws Exception
+	 */
+	public  ItemsCustom findItemById(int id) throws Exception;
 }
